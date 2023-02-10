@@ -17,3 +17,5 @@ export class Poll extends BaseEntity {
     // options: Option
 
 }
+
+export { Option };

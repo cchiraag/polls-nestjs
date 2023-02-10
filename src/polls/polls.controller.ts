@@ -20,9 +20,9 @@ export class PollsController {
     return await this.pollsService.insertProvidedResponse(+id, res);
   }
 
-  @Get(':id/results')
-  async getLiveResponses(@Param('id') id: number) {
-    return await this.pollsService.getLiveResponses(+id);
-  }
+  // @Get(':id/results')
+  // async getLiveResponses(@Param('id') id: number) {
+  //   return await this.pollsService.getLiveResponses(+id);
+  // }
 
 }

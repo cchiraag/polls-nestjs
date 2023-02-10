@@ -18,32 +18,6 @@ export class PollsService {
         private choicesRepository: Repository<Choice>
     ) {}
 
-    // async create(createUserDto: CreateUserDto) {
-        
-    //     try {
-    //         const user = this.usersRepository.create(createUserDto);
-    //         await this.usersRepository.save(user);
-    //         delete user.password;   // delete password from the user
-    //         return {
-    //             success: true,
-    //             message: 'New Record Created',
-    //             data: await user,
-    //         };
-    //     } catch(err) {
-    //         if (err.code == 'ER_DUP_ENTRY'){
-    //             return {
-    //                 success: false,
-    //                 message: 'Username/Email already exists',
-    //             }
-    //         } else {
-    //             return {
-    //                 success: false,
-    //                 message: 'Unable to create the record for user'
-    //             }
-    //         }
-    //     }
-    // }
-
     // to get list of total polls present in database (from polls table)
     async getTotalPolls(): Promise<Poll[]> {
         return await this.pollsRepository.find();
