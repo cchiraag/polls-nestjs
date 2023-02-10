@@ -1,12 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Put } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Poll } from './polls/entities/poll.entity';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async getPolls() {
+    return await this.appService.getPolls();
+  }
+
+  @Put()
+  async changeStatus(@Body() res: Poll) {
+    return await this.appService.changeStatus(res);
   }
 }

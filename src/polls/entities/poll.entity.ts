@@ -7,10 +7,10 @@ export class Poll extends BaseEntity {
     @PrimaryGeneratedColumn({name: 'poll_id'})
     id: number;
 
-    @Column({name: 'description'})
+    @Column()
     description: string;
 
-    @Column({name: 'status'})
+    @Column()
     status: string;
 
     // @OneToMany(() => Option, (option: Option) => option.poll)

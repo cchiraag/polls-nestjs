@@ -32,8 +32,9 @@ const entities = [Poll, Option, Choice];
 
       entities: entities,
       synchronize: true,
-      logging: true
+      // logging: true
     }),
+    TypeOrmModule.forFeature([Poll]),
     PollsModule
   ],
   controllers: [AppController],

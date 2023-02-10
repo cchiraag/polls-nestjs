@@ -80,7 +80,7 @@ export class PollsService {
     async getLiveResponses(id: number) {
 
         const countOfResponsesOfSinglePoll = await this.responsesForSinglePoll(id);
-        const countForEachOption = await this.countForEachOption();
+        const countForEachOption = await this.countForEachOption(id);
 
         return {
             totalResponses: countOfResponsesOfSinglePoll,
@@ -98,19 +98,20 @@ export class PollsService {
     }
 
     // to get the count of each option from the specified list of choices
-    async countForEachOption(): Promise<number[]> {
-        const countOfFirstOption = await this.countForOneOption(1);
-        const countOfSecondOption = await this.countForOneOption(2);
-        const countOfThirdOption = await this.countForOneOption(3);
-        const countOfFourthOption = await this.countForOneOption(4);
+    async countForEachOption(id: number): Promise<number[]> {
+        const countOfFirstOption = await this.countForOneOption(1, id);
+        const countOfSecondOption = await this.countForOneOption(2, id);
+        const countOfThirdOption = await this.countForOneOption(3, id);
+        const countOfFourthOption = await this.countForOneOption(4, id);
 
         return [countOfFirstOption, countOfSecondOption, countOfThirdOption, countOfFourthOption];
     }
 
     // to get the count for specified option (from choices table)
-    async countForOneOption(num: number): Promise<number> {
+    async countForOneOption(num: number, id: number): Promise<number> {
         return await this.choicesRepository.count({
             where: {
+                id: id,
                 option_choice: num
             }
         });

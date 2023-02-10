@@ -4,8 +4,8 @@ import { Poll } from "./poll.entity";
 @Entity({name: 'options'})
 export class Option extends BaseEntity {
 
-    @PrimaryColumn({name: 'poll_id'})
-    id: number;
+    @PrimaryGeneratedColumn({name: 'option_id'})
+    option_id: number;
     
     @Column()
     option1: string;
@@ -18,6 +18,10 @@ export class Option extends BaseEntity {
 
     @Column()
     option4: string;
+
+    @Column({name: 'poll_id'})
+    id: number;
+
     
     // @ManyToOne(() => Poll, (poll: Poll) => poll.options, {onUpdate: 'CASCADE', onDelete: 'CASCADE'})
     // @JoinColumn({name: 'poll_id'})
