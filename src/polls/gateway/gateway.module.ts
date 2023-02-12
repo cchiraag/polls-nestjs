@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Choice } from "../entities/choice.entity";
 import { Poll } from "../entities/poll.entity";
-import { Option } from "../entities/poll.entity";
+import { Option } from "../entities/option.entity";
 import { PollsModule } from "../polls.module";
 import { PollsService } from "../polls.service";
 import { Gateway } from "./gateway";

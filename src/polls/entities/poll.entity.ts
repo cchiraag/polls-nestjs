@@ -1,5 +1,4 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, OneToMany, PrimaryColumn } from "typeorm";
-import { Option } from "./option.entity";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 
 @Entity({name: 'polls'})
 export class Poll extends BaseEntity {
@@ -17,5 +16,3 @@ export class Poll extends BaseEntity {
     // options: Option
 
 }
-
-export { Option };

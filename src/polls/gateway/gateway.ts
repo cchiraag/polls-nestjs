@@ -1,9 +1,9 @@
 import { OnModuleInit } from "@nestjs/common";
-import { Express } from "express";
 import { MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer } from "@nestjs/websockets";
 import { Server } from 'socket.io';
 import { PollsService } from "../polls.service";
 
+// access available to all the urls
 @WebSocketGateway({
     cors: {
         origin: '*'
@@ -19,8 +19,7 @@ export class Gateway implements OnModuleInit {
     // to setup connection
     onModuleInit() {
         this.server.on('connection', (socket) => {
-            // console.log(socket.id);
-            console.log('Connected');
+            console.log('Connected to Socket');
         });
     }
 

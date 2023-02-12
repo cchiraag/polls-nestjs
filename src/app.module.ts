@@ -8,7 +8,6 @@ import { Option } from './polls/entities/option.entity';
 import { PollsModule } from './polls/polls.module';
 import { Choice } from './polls/entities/choice.entity';
 import { GatewayModule } from './polls/gateway/gateway.module';
-import { PollsService } from './polls/polls.service';
 
 const entities = [Poll, Option, Choice];
 

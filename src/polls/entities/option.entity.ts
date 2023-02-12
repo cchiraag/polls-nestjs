@@ -1,11 +1,13 @@
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn, TableForeignKey } from "typeorm";
-import { Poll } from "./poll.entity";
 
 @Entity({name: 'options'})
 export class Option extends BaseEntity {
 
     @PrimaryGeneratedColumn({name: 'option_id'})
     option_id: number;
+
+    @Column()
+    question: string;
     
     @Column()
     option1: string;
