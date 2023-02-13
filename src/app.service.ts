@@ -15,11 +15,13 @@ export class AppService {
     return await this.pollsRepository.find();
   }
 
-  // to update the status of the poll (from polls table)
-  async changeStatus(res: Poll) {
-    return await this.pollsRepository.update(
-      { id: res.id },
-      { status: res.status },
-    );
+  // to update the status to active of the poll (from polls table)
+  async changeStatus(id: number) {
+    return await this.pollsRepository.update({id: id}, {status: 'active'});
+  }
+
+  // to again change the poll status
+  async revertStatus(id: number) {
+    return await this.pollsRepository.update({id: id}, {status: 'inactive'});
   }
 }

@@ -1,0 +1,25 @@
+<!--Designing a Navbar-->
+
+<nav class="navbar col navbar bg-info">
+    <div class="container-fluid">
+  
+    <!--LOGO-->
+      <a href="#" class="navbar-brand">
+        <img src="https://docquity.com/website_assets/images/logo.png" style="width: 150px">
+      </a>
+    <!--Toggle Button-->
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#myNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <!--Navbar components-->
+      <div id="myNav" class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a routerLink="polls" class="nav-link">All Polls</a></li>
+        </ul>
+      </div>
+  
+    </div>
+  </nav>
+  
+
+<router-outlet></router-outlet>

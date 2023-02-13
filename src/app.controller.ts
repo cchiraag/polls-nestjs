@@ -12,7 +12,12 @@ export class AppController {
   }
 
   @Put()
-  async changeStatus(@Body() res: Poll) {
-    return await this.appService.changeStatus(res);
+  async changeStatus(@Body() id: number) {
+    return await this.appService.changeStatus(id);
+  }
+
+  @Put()
+  async revertStatus(@Body() id: number) {
+    return await this.appService.revertStatus(id);
   }
 }

@@ -1,0 +1,34 @@
+<div class="col-md-7 m-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Poll Id</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userData">
+        <td>{{ user.poll_id }}</td>
+        <td>{{ user.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary bg-success" (click)="openForm()">
+    Make a Poll Live
+  </button>
+</div>
+
+<ng-container *ngIf="openform">
+  <div class="bg-white shadow-sm p-3">
+    <form>
+      <div class="form-group">
+        <label>Enter the Poll Number:</label><br />
+        <input type="text" placeholder="Enter poll Id" />
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" (click)="makeLive()">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-container>
