@@ -1,18 +1,22 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToMany,
+} from 'typeorm';
 
-@Entity({name: 'polls'})
+@Entity({ name: 'polls' })
 export class Poll extends BaseEntity {
+  @PrimaryGeneratedColumn({ name: 'poll_id' })
+  id: number;
 
-    @PrimaryGeneratedColumn({name: 'poll_id'})
-    id: number;
+  @Column()
+  description: string;
 
-    @Column()
-    description: string;
+  @Column()
+  status: string;
 
-    @Column()
-    status: string;
-
-    // @OneToMany(() => Option, (option: Option) => option.poll)
-    // options: Option
-
+  // @OneToMany(() => Option, (option: Option) => option.poll)
+  // options: Option
 }

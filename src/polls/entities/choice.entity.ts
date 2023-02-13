@@ -1,15 +1,13 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity({name: 'choices'})
+@Entity({ name: 'choices' })
 export class Choice extends BaseEntity {
+  @Column({ name: 'poll_id' })
+  id: number;
 
-    @Column({name: 'poll_id'})
-    id: number;
+  @Column()
+  option_choice: number;
 
-    @Column()
-    option_choice: number;
-
-    @PrimaryColumn()
-    user_id: string;
-
+  @PrimaryColumn()
+  user_id: string;
 }

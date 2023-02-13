@@ -14,7 +14,7 @@ const entities = [Poll, Option, Choice];
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true
+      isGlobal: true,
     }),
     TypeOrmModule.forRoot({
       // type: process.env.DB_TYPE as any,
@@ -24,12 +24,12 @@ const entities = [Poll, Option, Choice];
       // password: process.env.DB_PASSWORD,
       // database: process.env.DB_NAME,
 
-      type:'mysql',
-      host:'localhost',
-      port:3306,
-      password:'password',
-      username:'chirag',
-      database:'poll_sys',
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      password: 'password',
+      username: 'chirag',
+      database: 'poll_sys',
 
       entities: entities,
       synchronize: true,
@@ -37,10 +37,9 @@ const entities = [Poll, Option, Choice];
     }),
     TypeOrmModule.forFeature([Poll]),
     PollsModule,
-    GatewayModule
+    GatewayModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-
 export class AppModule {}

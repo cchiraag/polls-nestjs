@@ -10,10 +10,10 @@ import { Choice } from './entities/choice.entity';
   imports: [
     TypeOrmModule.forFeature([Poll]),
     TypeOrmModule.forFeature([Option]),
-    TypeOrmModule.forFeature([Choice])
+    TypeOrmModule.forFeature([Choice]),
   ],
   controllers: [PollsController],
   providers: [PollsService],
-  exports: [PollsService]
+  exports: [PollsService],
 })
 export class PollsModule {}

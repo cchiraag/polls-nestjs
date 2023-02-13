@@ -1,33 +1,36 @@
-import { OnModuleInit } from "@nestjs/common";
-import { MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer } from "@nestjs/websockets";
+import { OnModuleInit } from '@nestjs/common';
+import {
+  MessageBody,
+  SubscribeMessage,
+  WebSocketGateway,
+  WebSocketServer,
+} from '@nestjs/websockets';
 import { Server } from 'socket.io';
-import { PollsService } from "../polls.service";
+import { PollsService } from '../polls.service';
 
 // access available to all the urls
 @WebSocketGateway({
-    cors: {
-        origin: '*'
-    }
+  cors: {
+    origin: '*',
+  },
 })
 export class Gateway implements OnModuleInit {
+  constructor(private readonly pollsService: PollsService) {}
 
-    constructor(private readonly pollsService: PollsService) {}
+  @WebSocketServer()
+  server: Server;
 
-    @WebSocketServer()
-    server: Server;
+  // to setup connection
+  onModuleInit() {
+    this.server.on('connection', (socket) => {
+      console.log('Connected to Socket');
+    });
+  }
 
-    // to setup connection
-    onModuleInit() {
-        this.server.on('connection', (socket) => {
-            console.log('Connected to Socket');
-        });
-    }
-
-    // to send the count of each option
-    @SubscribeMessage('sendCountOfEachOption')
-    async countForLiveResponses(@MessageBody() body: number) {
-        const res = await this.pollsService.getLiveResponses(body);
-        this.server.emit('resFromServer', res);
-    }
-
+  // to send the count of each option
+  @SubscribeMessage('sendCountOfEachOption')
+  async countForLiveResponses(@MessageBody() body: number) {
+    const res = await this.pollsService.getLiveResponses(body);
+    this.server.emit('resFromServer', res);
+  }
 }

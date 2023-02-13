@@ -1,31 +1,39 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn, TableForeignKey } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+  TableForeignKey,
+} from 'typeorm';
 
-@Entity({name: 'options'})
+@Entity({ name: 'options' })
 export class Option extends BaseEntity {
+  @PrimaryGeneratedColumn({ name: 'option_id' })
+  option_id: number;
 
-    @PrimaryGeneratedColumn({name: 'option_id'})
-    option_id: number;
+  @Column()
+  question: string;
 
-    @Column()
-    question: string;
-    
-    @Column()
-    option1: string;
-    
-    @Column()
-    option2: string;
+  @Column()
+  option1: string;
 
-    @Column()
-    option3: string;
+  @Column()
+  option2: string;
 
-    @Column()
-    option4: string;
+  @Column()
+  option3: string;
 
-    @Column({name: 'poll_id'})
-    id: number;
+  @Column()
+  option4: string;
 
-    
-    // @ManyToOne(() => Poll, (poll: Poll) => poll.options, {onUpdate: 'CASCADE', onDelete: 'CASCADE'})
-    // @JoinColumn({name: 'poll_id'})
-    // poll: Poll
+  @Column({ name: 'poll_id' })
+  id: number;
+
+  // @ManyToOne(() => Poll, (poll: Poll) => poll.options, {onUpdate: 'CASCADE', onDelete: 'CASCADE'})
+  // @JoinColumn({name: 'poll_id'})
+  // poll: Poll
 }

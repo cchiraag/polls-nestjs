@@ -16,7 +16,10 @@ export class PollsController {
   }
 
   @Post(':id')
-  async insertProvidedResponse(@Param('id') id: number, @Body() res: Promise<any>) {
+  async insertProvidedResponse(
+    @Param('id') id: number,
+    @Body() res: Promise<any>,
+  ) {
     return await this.pollsService.insertProvidedResponse(+id, res);
   }
 
@@ -24,5 +27,4 @@ export class PollsController {
   // async getLiveResponses(@Param('id') id: number) {
   //   return await this.pollsService.getLiveResponses(+id);
   // }
-
 }
