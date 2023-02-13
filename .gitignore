@@ -1,7 +1,7 @@
 # compiled output
 /dist
 /node_modules
-frontend-angular/node_modules
+/frontend-angular/node_modules
 
 # Logs
 logs
