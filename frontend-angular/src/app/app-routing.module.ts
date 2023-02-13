@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 import { PollPageComponent } from './admin/poll-page/poll-page.component';
