@@ -43,14 +43,18 @@ export class WebsocketService {
       ws.onclose = obs.complete.bind(obs);
       return ws.close.bind(ws);
     });
-    const observer = {
-      error: null,
-      complete: null,
+    const observer: Observer<MessageEvent<any>> = {
       next: (data: object) => {
         console.log('Message sent to websocket: ', data);
         if (ws.readyState == WebSocket.OPEN) {
           ws.send(JSON.stringify(data));
         }
+      },
+      error: function (err: any): void {
+        throw new Error('Function not implemented.');
+      },
+      complete: function (): void {
+        throw new Error('Function not implemented.');
       },
     };
     return new AnonymousSubject<MessageEvent>(observer, observable);
