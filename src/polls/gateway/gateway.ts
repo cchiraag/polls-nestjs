@@ -14,18 +14,18 @@ import { PollsService } from '../polls.service';
     origin: '*',
   },
 })
-export class Gateway implements OnModuleInit {
+export class Gateway {
   constructor(private readonly pollsService: PollsService) {}
 
   @WebSocketServer()
   server: Server;
 
   // to setup connection
-  onModuleInit() {
-    this.server.on('connection', (socket) => {
-      console.log('Connected to Socket');
-    });
-  }
+  // onModuleInit() {
+  //   this.server.on('connection', (socket) => {
+  //     console.log('Connected to Socket');
+  //   });
+  // }
 
   // to send the count of each option
   @SubscribeMessage('sendCountOfEachOption')
