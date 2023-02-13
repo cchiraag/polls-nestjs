@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PollService } from '../poll.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-poll-page',
@@ -11,12 +12,14 @@ export class PollPageComponent {
   response: any = 0;
   id: any;
   a: any;
+  userdata: any;
   //specificPoll: any;
   //specificPollData:any = 0;
 
   constructor(
     private pollService: PollService,
     private router: ActivatedRoute,
+    private socket: Socket,
   ) {}
 
   getData() {
@@ -58,5 +61,13 @@ export class PollPageComponent {
   ngOnInit() {
     this.id = this.router.snapshot.params['id'];
     this.getData();
+    this.socket.on('resFromServer', (data: any) => {
+      this.userData(data[0]);
+    });
+  }
+
+  userData(data: any) {
+    this.userdata = data;
+    console.log(this.userdata);
   }
 }
