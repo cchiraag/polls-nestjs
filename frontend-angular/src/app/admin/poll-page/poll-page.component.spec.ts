@@ -8,9 +8,8 @@ describe('PollPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PollPageComponent ]
-    })
-    .compileComponents();
+      declarations: [PollPageComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PollPageComponent);
     component = fixture.componentInstance;
