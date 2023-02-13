@@ -15,7 +15,7 @@ import { PollsService } from '../polls.service';
   },
 })
 export class Gateway implements OnModuleInit {
-  constructor(private readonly pollsService: PollsService) { }
+  constructor(private readonly pollsService: PollsService) {}
 
   @WebSocketServer()
   server: Server;
@@ -27,12 +27,10 @@ export class Gateway implements OnModuleInit {
     });
   }
 
-
   // to send the count of each option
   @SubscribeMessage('sendCountOfEachOption')
   async countForLiveResponses(@MessageBody() id: number) {
     const res = await this.pollsService.getLiveResponses(id);
     this.server.emit('resFromServer', res);
   }
-
 }
