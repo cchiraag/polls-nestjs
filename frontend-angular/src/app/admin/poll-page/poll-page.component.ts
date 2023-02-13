@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PollService } from '../poll.service';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
 
 @Component({
   selector: 'app-poll-page',
@@ -11,6 +13,7 @@ export class PollPageComponent {
   response: any = 0;
   id: any;
   a: any;
+  userdata: any;
   //specificPoll: any;
   //specificPollData:any = 0;
 
@@ -54,9 +57,17 @@ export class PollPageComponent {
   //             // }
   //     })
   //   })
+  httpServer = createServer();
+  io = new Server(this.httpServer);
 
   ngOnInit() {
     this.id = this.router.snapshot.params['id'];
     this.getData();
+    this.io.on('resFromServer', (data: any) => {
+      this.userData(data);
+    });
+  }
+  userData(data: any) {
+    this.userdata = data;
   }
 }
