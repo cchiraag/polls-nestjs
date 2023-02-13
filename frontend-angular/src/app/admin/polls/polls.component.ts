@@ -16,22 +16,21 @@ export class PollsComponent {
 constructor(private pollService: PollService, private router: Router){ }
 
 getData(){
-  return this.pollService.allPolls(this.allPolls).subscribe((response) =>{
+  return this.pollService.getPolls().subscribe((response) =>{
     this.response = response;
-    this.userData = this.response.rows;
   })
 }
 
-moveToPollPage(){
- return this.pollService.allPolls(this.allPolls).subscribe((response) =>{
-    for(let i=0;i<10;i++){
-      if(this.response.rows[i].status === "Active"){
-         this.router.navigate(['/polls/'+(i+1)]);
-      }
-    }
-    console.log(this.response.rows[0])
-  })
-}
+// moveToPollPage(){
+//  return this.pollService.getPolls(this.allPolls).subscribe((response) =>{
+//     for(let i=0;i<10;i++){
+//       if(this.response.rows[i].status === "Active"){
+//          this.router.navigate(['/polls/'+(i+1)]);
+//       }
+//     }
+//     console.log(this.response.rows[0])
+//   })
+// }
 
 //  getData(){
 //     return this.http.get('http://localhost:3000/polls').subscribe((response) => {

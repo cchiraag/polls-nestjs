@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <body>
@@ -12,11 +11,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of userData">
-          <td>{{user.poll_id}}</td>
+        <tr *ngFor="let user of response">
+          <td>{{user.id}}</td>
           <td>{{user.description}}</td>
           <td>{{user.status}}</td>
-          <button *ngIf="user.status === 'Active'" class="btn btn-primary bg-warning" type="submit" (click) = "moveToPollPage()">Go to poll</button>
+          <button *ngIf="user.status === 'Active'" class="btn btn-primary bg-warning" type="submit">Go to poll</button>
+          <!-- <button *ngIf="user.status === 'Active'" class="btn btn-primary bg-warning" type="submit" (click) = "moveToPollPage()">Go to poll</button> -->
         </tr>
       </tbody>
     </table>
@@ -24,8 +24,6 @@
 </body>
 
 </html>
-
-
 
 
 

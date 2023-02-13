@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 export class PollsManagementComponent {
   response: any;
   allPolls: any;
-  userData: any;
   pollStatus:any;
   openform:boolean=false;
   submitted:boolean=false;
@@ -18,9 +17,9 @@ export class PollsManagementComponent {
   constructor(private pollService: PollService, private router: Router){}
   
   getData(){
-    return this.pollService.PollsManagemet(this.allPolls).subscribe((response: any) =>{
+    return this.pollService.getPolls().subscribe((response: any) =>{
       this.response = response;
-      this.userData = this.response.rows;
+      console.log(this.response);
     })
   }
 

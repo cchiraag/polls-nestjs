@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PollService } from '../poll.service';
-import {
-  WebSocketServer,
-} from '@nestjs/websockets';
-import { Server } from 'socket.io';
-import { Socket } from 'socket.io';
 
 @Component({
   selector: 'app-poll-page',
@@ -13,44 +8,55 @@ import { Socket } from 'socket.io';
   styleUrls: ['./poll-page.component.css']
 })
 export class PollPageComponent {
-  response: any;
-  specificPoll: any;
-  subroute:any;
-  poll_id:any;
-  specificPollData:any = 0;
-  userdata: any;
+  response: any=0;
+  id:any;
+  a:any;
+  //specificPoll: any;
+  //specificPollData:any = 0;
   
 
-constructor(private pollService: PollService, private router: ActivatedRoute, private socket: Socket){ }
+constructor(private pollService: PollService, private router: ActivatedRoute){ }
+
 
 getData(){
-  this.subroute = this.router.params.subscribe(params =>{
-    return this.pollService.pollPage(this.specificPoll).subscribe((response)=>{
-      this.response = response;
-            this.specificPoll = this.response.rows;
-            this.poll_id = params['poll_id']
-          //  console.log(this.poll_id)
-          this.specificPollData = this.specificPoll[this.poll_id-1]
-            // if(this.poll_id == this.specificPoll[this.poll_id-1].poll_id){
-            //  // console.log(this.poll_id)
-            //  // console.log(this.specificPoll[this.poll_id-1])
-            //  this.specificPollData = this.specificPoll[this.poll_id-1]
-            // }           
-    })
-  })
+   return this.pollService.getSpecificPollPageData(this.id).subscribe((response)=>{
+    this.response = response;
+    console.log(this.response)
+    //console.log(this.response["id"])
+    console.log(this.response.question)
+    this.a = this.response.question;
+   })
 }
 
-userData(data: any){
-  this.userdata = data;
-}
+
+// getData(){
+//   this.subroute = this.router.params.subscribe(params =>{
+//     return this.pollService.getSpecificPollPageData().subscribe((response)=>{
+//       this.response = response;        
+//     })
+//  }
+// )}
+
+// getData(){
+//   this.subroute = this.router.params.subscribe(params =>{
+//     return this.pollService.pollPage(this.specificPoll).subscribe((response)=>{
+//       this.response = response;
+//             this.specificPoll = this.response.rows;
+//             this.poll_id = params['poll_id']
+//           //  console.log(this.poll_id)
+//           this.specificPollData = this.specificPoll[this.poll_id-1]
+//             // if(this.poll_id == this.specificPoll[this.poll_id-1].poll_id){
+//             //  // console.log(this.poll_id)
+//             //  // console.log(this.specificPoll[this.poll_id-1])
+//             //  this.specificPollData = this.specificPoll[this.poll_id-1]
+//             // }           
+//     })
+//   })
+
+
 
 ngOnInit(){
-
-  // to setup connection
-  this.socket.on('resFromServer', (data: any) => {
-    this.userData(data);
-    // console.log('Connected to Socket');
-  });
+  this.id =this.router.snapshot.params['id'];
+  this.getData();
  }
 }
- 

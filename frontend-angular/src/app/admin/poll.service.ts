@@ -6,25 +6,25 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PollService {
 
-  _url1 ='http://localhost:3000/polls';
-  _url2 ='http://localhost:3000/polls/:poll_id';
+  url1 ='http://localhost:3000/polls';
+ 
 
   constructor(private http: HttpClient) { }
 
-  allPolls(allPolls:any){
-    return this.http.get<any>(this._url1, allPolls);
+  getPolls(){
+    return this.http.get(this.url1);
   }
   
-  pollPage(specificPoll:any){
-    return this.http.get<any>(this._url2, specificPoll);
-  }
+  getSpecificPollPageData(id:number){
+    return this.http.get('http://localhost:3000/polls/'+id);
+   }
 
-  update(pollStatus:any){
-    return this.http.put<any>(this._url1, pollStatus);
-  }
+  // update(pollStatus:any){
+  //   return this.http.put<any>(this._url1, pollStatus);
+  // }
 
-  PollsManagemet(allPolls:any){
-    return this.http.get<any>(this._url1, allPolls);
-  }
+  // PollsManagemet(allPolls:any){
+  //   return this.http.get<any>(this._url1, allPolls);
+  // }
  
 }

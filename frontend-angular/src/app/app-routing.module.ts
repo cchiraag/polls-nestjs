@@ -7,7 +7,7 @@ import { PollsComponent } from './admin/polls/polls.component';
 
 const routes: Routes = [
   {path: 'polls', component: PollsComponent},
-  {path: 'polls/:poll_id', component: PollPageComponent},
+  {path: 'polls/:id', component: PollPageComponent},
   {path: 'pollsManagement', component: PollsManagementComponent}
 ];
 
