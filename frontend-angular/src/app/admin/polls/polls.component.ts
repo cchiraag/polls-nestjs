@@ -18,19 +18,24 @@ constructor(private pollService: PollService, private router: Router){ }
 getData(){
   return this.pollService.getPolls().subscribe((response) =>{
     this.response = response;
+   // console.log(this.response);
   })
 }
 
-// moveToPollPage(){
-//  return this.pollService.getPolls(this.allPolls).subscribe((response) =>{
-//     for(let i=0;i<10;i++){
-//       if(this.response.rows[i].status === "Active"){
-//          this.router.navigate(['/polls/'+(i+1)]);
-//       }
-//     }
-//     console.log(this.response.rows[0])
-//   })
-// }
+moveToPollPage(){
+  return this.pollService.getPolls().subscribe((response)=>{
+    this.response = response;
+
+     for(let i=0;i<10;i++){
+      console.log(this.response[i].status)
+    if(this.response[i].status === "active"){
+          this.router.navigate(['/polls/'+(i+1)]);
+     }
+    }
+  })
+}
+
+
 
 //  getData(){
 //     return this.http.get('http://localhost:3000/polls').subscribe((response) => {

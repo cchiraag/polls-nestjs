@@ -26,11 +26,9 @@ const entities = [Poll, Option, Choice];
 
       type: 'mysql',
       host: 'localhost',
-      port: 3306,
-      password: 'password',
-      username: 'chirag',
+      username: 'shruti',
+      password: 'SanjivAparna@21',
       database: 'poll_sys',
-
       entities: entities,
       synchronize: true,
       // logging: true

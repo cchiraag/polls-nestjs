@@ -23,11 +23,14 @@
     <form>
       <div class="form-group">
         <label>Enter the Poll Number:</label><br />
-        <input type="text" placeholder="Enter poll Id" />
+        <input type="number" placeholder="Enter poll Id" (input) = "saveThePollIdEntered($event)">
       </div>
+      <!-- <span>you entered {{enteredValue}}</span> -->
 
       <div class="form-group">
-        <button class="btn btn-primary" type="submit" (click)="makeLive()">Submit</button>
+        <button class="btn btn-primary" type="submit" (click)="makeLive()">
+          Submit
+        </button>
       </div>
     </form>
   </div>

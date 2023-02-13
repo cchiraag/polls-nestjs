@@ -16,12 +16,12 @@ export class AppService {
   }
 
   // to update the status to active of the poll (from polls table)
-  async changeStatus(id: number) {
-    return await this.pollsRepository.update({id: id}, {status: 'active'});
+  async changeStatus(body: any) {
+    return await this.pollsRepository.update({id: body.id}, {status: 'active'});
   }
 
   // to again change the poll status
-  async revertStatus(id: number) {
-    return await this.pollsRepository.update({id: id}, {status: 'inactive'});
+  async revertStatus(body: any) {
+    return await this.pollsRepository.update({id: body.id}, {status: 'inactive'});
   }
 }

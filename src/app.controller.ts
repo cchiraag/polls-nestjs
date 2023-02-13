@@ -12,12 +12,12 @@ export class AppController {
   }
 
   @Put()
-  async changeStatus(@Body() id: number) {
-    return await this.appService.changeStatus(id);
+  async changeStatus(@Body() body: any) {
+    return await this.appService.changeStatus(body);
   }
 
   @Put()
-  async revertStatus(@Body() id: number) {
-    return await this.appService.revertStatus(id);
+  async revertStatus(@Body() body: any) {
+    return await this.appService.revertStatus(body);
   }
 }
