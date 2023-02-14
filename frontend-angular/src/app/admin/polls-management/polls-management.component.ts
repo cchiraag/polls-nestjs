@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PollService } from '../poll.service';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-polls-management',
   templateUrl: './polls-management.component.html',
   styleUrls: ['./polls-management.component.css'],
 })
-export class PollsManagementComponent {
+export class PollsManagementComponent implements OnInit {
   response: any;
   openform: boolean = false;
   submitted: boolean = false;
   enteredValue: string = '';
   toNumber: number = 0;
   id: any;
+  buttonClicked: boolean = false;
 
-  constructor(private pollService: PollService, private router: Router) {}
+  constructor(private pollService: PollService, private router: Router) {
+    console.log('Polls management constructor');
+  }
 
   getData() {
     return this.pollService.getPolls().subscribe((response: any) => {
@@ -33,21 +37,23 @@ export class PollsManagementComponent {
     return (this.enteredValue = (<HTMLInputElement>eventData.target).value);
   }
 
-  makeLive() {
+  async makeLive() {
     this.submitted = true;
+    this.buttonClicked = true;
     console.log(this.enteredValue);
     this.toNumber = Number(this.enteredValue);
     console.log(this.toNumber);
-    this.pollService.updateStatus(this.toNumber).subscribe((result) => {
-      // this.id = result
-      // console.log(this.toNumber)
-      console.log(result);
-      // return this.id;
-    });
-    return this.router.navigate(['/polls']);
 
-    //step1 convert this.enteredValue from string to int
-    // then return that integer
+    await firstValueFrom(this.pollService.updateStatus(this.toNumber));
+    console.log('Completed application call');
+    await this.router.navigate(['/polls']);
+    return;
+    // .subscribe((result) => {
+    //   // this.id = result
+    //   // console.log(this.toNumber)
+    //   console.log(result);
+    //   // return this.id;
+    // });
 
     // this.pollService.update(this.)
     // return this.pollService.update(this.pollStatus).subscribe((response) => {
