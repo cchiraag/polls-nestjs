@@ -6,13 +6,13 @@ import { PollsManagementComponent } from './admin/polls-management/polls-managem
 import { PollsComponent } from './admin/polls/polls.component';
 
 const routes: Routes = [
-  {path: 'polls', component: PollsComponent},
-  {path: 'polls/:id', component: PollPageComponent},
-  {path: 'pollsManagement', component: PollsManagementComponent}
+  { path: 'polls', component: PollsComponent },
+  { path: 'polls/:id', component: PollPageComponent },
+  { path: 'pollsManagement', component: PollsManagementComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes), AdminModule],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

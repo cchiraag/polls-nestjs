@@ -1,70 +1,33 @@
 <html>
-
-<body>
-  <div class="col-md-7 m-5">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Poll Id</th>
-          <th scope="col">Description</th>
-          <th scope="col">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of response">
-          <td>{{user.id}}</td>
-          <td>{{user.description}}</td>
-          <td>{{user.status}}</td>
-          <button *ngIf="user.status === 'active'" class="btn btn-primary bg-warning" type="buttonutoo" (click) = "moveToPollPage()">Go to poll</button>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</body>
-
+  <body>
+    <div class="col-md-7 m-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Poll Id</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of response">
+            <td>{{ user.id }}</td>
+            <td>{{ user.description }}</td>
+            <td>{{ user.status }}</td>
+            <button
+              *ngIf="user.status === 'active'"
+              class="btn btn-primary bg-warning"
+              type="buttonutoo"
+              (click)="moveToPollPage()"
+            >
+              Go to poll
+            </button>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!--Important-->
 <!-- <div class="container-sm my-5 p-5 border">

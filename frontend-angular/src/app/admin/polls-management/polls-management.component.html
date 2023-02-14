@@ -23,7 +23,11 @@
     <form>
       <div class="form-group">
         <label>Enter the Poll Number:</label><br />
-        <input type="number" placeholder="Enter poll Id" (input) = "saveThePollIdEntered($event)">
+        <input
+          type="number"
+          placeholder="Enter poll Id"
+          (input)="saveThePollIdEntered($event)"
+        />
       </div>
       <!-- <span>you entered {{enteredValue}}</span> -->
 

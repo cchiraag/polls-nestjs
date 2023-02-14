@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-md-6 mx-auto">
       <div class="card" id="card1">
-        
         <!-- Card Header-->
         <div class="card-header bg-warning">
           <h3>POLL</h3>
@@ -10,40 +9,62 @@
 
         <!--Card Body-->
         <div class="card-body">
-
           <form [formGroup]="pollForm" (ngSubmit)="postPollPageResponse()">
-            
             <div class="form-group">
-              
-              <label for="options">{{ response.question }}</label> 
+              <label for="options">{{ response.question }}</label>
 
               <div>
                 <label>{{ response.option1 }}</label>
-                <input type="radio" name="options" value = 1 formControlName="options">
+                <input
+                  type="radio"
+                  name="options"
+                  value="1"
+                  formControlName="options"
+                />
               </div>
 
               <div>
                 <label>{{ response.option2 }}</label>
-                <input type="radio" name="options" value = 2 formControlName="options">
+                <input
+                  type="radio"
+                  name="options"
+                  value="2"
+                  formControlName="options"
+                />
               </div>
 
               <div>
                 <label>{{ response.option3 }}</label>
-                <input type="radio" name="options" value = 3 formControlName="options">
+                <input
+                  type="radio"
+                  name="options"
+                  value="3"
+                  formControlName="options"
+                />
               </div>
 
               <div>
                 <label>{{ response.option4 }}</label>
-                <input type="radio" name="options" value = 4 formControlName="options">
+                <input
+                  type="radio"
+                  name="options"
+                  value="4"
+                  formControlName="options"
+                />
               </div>
 
               <!-- <div *ngIf="f.options.touched && f.options.invalid" class="alert alert-danger">
                 <div *ngIf="f.options?.errors?.['required']">Name is required.</div>
               </div> -->
-
             </div>
 
-            <button class="btn btn-primary" [disabled]="!pollForm.valid" type="submit">Submit</button>
+            <button
+              class="btn btn-primary"
+              [disabled]="!pollForm.valid"
+              type="submit"
+            >
+              Submit
+            </button>
           </form>
         </div>
       </div>

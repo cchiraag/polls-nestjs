@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PollService } from '../poll.service';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-poll-page',
@@ -15,15 +15,14 @@ export class PollPageComponent {
   submitted = false;
   resultData: any;
 
-
   constructor(
     private pollService: PollService,
     private router: ActivatedRoute,
   ) {}
 
   pollForm = new FormGroup({
-    options: new FormControl('', Validators.required)
-   });
+    options: new FormControl('', Validators.required),
+  });
 
   getData() {
     return this.pollService
@@ -37,26 +36,31 @@ export class PollPageComponent {
   }
 
   postPollPageResponse() {
-    
-    this.submitted = true
+    this.submitted = true;
     if (this.pollForm.invalid) {
-       return
+      return;
     }
-   const RandomlyGeneratedUserId= Math.random().toString(36).substring(2,12);
-   const SelectedOptionNumber = Number(this.pollForm.value.options)
+    const RandomlyGeneratedUserId = Math.random().toString(36).substring(2, 12);
+    const SelectedOptionNumber = Number(this.pollForm.value.options);
 
-   this.pollService.submitThePollResponse(this.id, SelectedOptionNumber, RandomlyGeneratedUserId).subscribe((result)=>{
-      this.resultData = result
-      console.log(this.resultData)
-   })
-   //console.log(RandomlyGeneratedUserId);
-   //console.log(this.pollForm.value);
-   // const SelectedOptionNumber = Number(this.pollForm.value.options)
-   //console.log(SelectedOptionNumber)
-   // console.log(this.id)
+    this.pollService
+      .submitThePollResponse(
+        this.id,
+        SelectedOptionNumber,
+        RandomlyGeneratedUserId,
+      )
+      .subscribe((result) => {
+        this.resultData = result;
+        console.log(this.resultData);
+      });
+    //console.log(RandomlyGeneratedUserId);
+    //console.log(this.pollForm.value);
+    // const SelectedOptionNumber = Number(this.pollForm.value.options)
+    //console.log(SelectedOptionNumber)
+    // console.log(this.id)
   }
 
-  get f(){
+  get f() {
     return this.pollForm.controls;
   }
   // getData(){
