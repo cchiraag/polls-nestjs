@@ -22,6 +22,10 @@ export class PollService {
     return this.http.put(this.url0, {id: id});
   }
 
+  submitThePollResponse(id: number, option_choice:number, user_id: string){
+    return this.http.post('http://localhost:3000/polls/' + id, {id:id, option_choice: option_choice, user_id: user_id});
+  }
+
   // update(pollStatus:any){
   //   return this.http.put<any>(this._url1, pollStatus);
   // }

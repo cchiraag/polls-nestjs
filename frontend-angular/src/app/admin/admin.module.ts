@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PollsComponent } from './polls/polls.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,8 +16,9 @@ import { PollsManagementComponent } from './polls-management/polls-management.co
     PollsManagementComponent
   ],
   imports: [
+    ReactiveFormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class AdminModule { }

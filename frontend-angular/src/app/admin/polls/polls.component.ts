@@ -25,6 +25,7 @@ export class PollsComponent implements OnInit {
     return firstValueFrom(this.pollService.getPolls());
   }
 
+  //will redirect you to the corresponding poll page
   moveToPollPage() {
     return this.pollService.getPolls().subscribe((response) => {
       this.response = response;
